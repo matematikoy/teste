@@ -1,0 +1,78 @@
+/* Configuração básica do body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Para centralizar verticalmente */
+}
+
+/* Barra superior (title_bar) */
+.title_bar {
+    width: 100%;
+    background-color: #4CAF50;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Estilo do título */
+.title {
+    margin: 0;
+    font-size: 28px;
+}
+
+/* Estilo para o formulário */
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Definindo uma largura fixa */
+    text-align: center;
+}
+
+/* Estilo dos campos de entrada (input) */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Estilo do botão de submit */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #388E3C;
+}
+
+/* Estilo da mensagem de erro */
+.erro {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}

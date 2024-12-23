@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <title>Exportação Correios</title>
+
+</head>
+<body>
+
+    <div class="title_bar">
+
+        <div class="logo">
+            <!--<img src="{% static 'images/logo.png' %}" alt="Logo" class="logo_image">-->
+        </div>
+
+        <h1 class="title">Exportar Livros para Correios</h1>
+    
+        {% if not request.session.token %}
+        <!-- Se não houver token, redirecionar para a página de login -->
+        <p>Você precisa fazer login para acessar esta página. <a href="{% url 'login' %}">Clique aqui para fazer login</a></p>
+        {% else %}
+        <!-- Exibir o botão de logoff -->
+        <form class="form-logout" method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn_logout">Logoff</button>
+        </form>
+    </div>
+
+    <div class="background-container">
+
+        <button id="openModalBtn" class="btn_abrir_export" style="display: none;">Ver IDs, Nomes e Cursos</button>
+
+        <!-- Formulário -->
+        <form method="POST">
+            <div class="filtro">
+                <div class="filtro-content">
+                    <div class="input_container">
+                        {% csrf_token %}
+                        <label for="centro_custo">Centro de Custo:</label><br>
+                        <select id="centro_custo" name="centro_custo" required>
+                            <option value="BH">CUREM BH</option>
+                            <option value="GO">CUREM GO</option>
+                            <option value="ES">CUREM ES</option>
+                        </select><br><br>
+                    </div>
+                
+                    <div class="input_container">
+                        <label for="data_inicial">Data Inicial:</label><br>
+                        <input type="date" id="data_inicial" name="data_inicial" required><br><br>
+                    </div>  
+                
+                    <div class="input_container">
+                        <label for="data_final">Data Final:</label><br>
+                        <input type="date" id="data_final" name="data_final" required><br><br>
+                    </div>  
+                
+                    <button class="btn_gerar" type="submit">PESQUISAR</button>
+                </div>
+            </div>
+        </form>
+
+        {% if ids_nomes_cursos_emitidos %}
+            <!-- Modal -->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div class="div-close-btn">
+                        <span class="close-btn" id="closeModalBtn">&times;</span>
+                    </div>
+                    <h2>IDs, Nomes e Cursos com nota 'EMITIDA':</h2>
+                    <ul>
+                        {% for id, nome, curso in ids_nomes_cursos_emitidos %}
+                            <li class="nomes-export">ID: {{ id }}, Nome: {{ nome }}, Curso: {{ curso }}</li>
+                            <!-- Adiciona cada ID como um campo oculto -->
+                            <input type="hidden" name="ids" value="{{ id }}">
+                        {% endfor %}
+                        <form class="form-export" method="POST" action="{% url 'exportar' %}">
+                            {% csrf_token %}
+                            <button class="btn_export" type="submit">EXPORTAR</button>
+                        </form>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Botão para abrir o modal (inicialmente oculto) -->
+        {% endif %}
+
+        {% endif %}
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+
+        
+
+        <div class="footer-content">
+
+            <p>Feito com <img src="{% static 'images/heart.png' %}" alt="Coração" class="footer-icon">, 
+                <img src="{% static 'images/coffee.png' %}" alt="Café" class="footer-icon"> 
+                usando <img src="{% static 'images/vscode.png' %}" alt="VSCode" class="footer-icon"> 
+            </p>
+
+            <p>&copy; 2024 Lucas Marques. Todos os direitos reservados.</p>
+            <p><a href="#">Política de Privacidade</a> | <a href="#">Termos de Uso</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Abre o modal automaticamente quando os resultados são encontrados
+        const modal = document.getElementById("myModal");
+        const closeModalBtn = document.getElementById("closeModalBtn");
+        const openModalBtn = document.getElementById("openModalBtn");
+
+        // Exibir o modal automaticamente ao carregar a página com dados emitidos
+        window.onload = function() {
+            if (modal) {
+                modal.style.display = "block";  // Abre o modal
+            }
+        };
+
+        // Fechar o modal e exibir o botão "Ver IDs, Nomes e Cursos"
+        closeModalBtn.onclick = function() {
+            modal.style.display = "none";  // Fecha o modal
+            openModalBtn.style.display = "block";  // Exibe o botão
+        };
+
+        // Ao clicar no botão "Ver IDs, Nomes e Cursos", reabre o modal
+        openModalBtn.onclick = function() {
+            modal.style.display = "block";  // Reabre o modal
+            openModalBtn.style.display = "none";  // Oculta o botão
+        };
+
+        // Fecha o modal se clicar fora dele
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";  // Fecha o modal
+                openModalBtn.style.display = "block";  // Exibe o botão
+            }
+        };
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <title>Login - Exportação Correios</title>
+</head>
+<body>
+
+    <div class="title_bar">
+
+        <div class="logo">
+            <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo_image">
+        </div>
+
+        <h1 class="title">Exportar Livros para Correios</h1>
+    
+
+    </div>
+
+    {% if erro %}
+        <div id="errorModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <p>{{ erro }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    <form class="form-login" method="POST">
+
+        <h1 class="text-login">Entre com seu login e senha</h1>
+
+        {% csrf_token %}
+        <label for="usuario">Usuário:</label><br>
+        <input type="text" id="usuario" name="usuario" required><br><br>
+
+        <label for="senha">Senha:</label><br>
+        <input type="password" id="senha" name="senha" required><br><br>
+
+        <button class="login" type="submit">Entrar</button>
+    </form>
+
+
+    <script>
+        // Função para exibir o pop-up de erro
+        {% if erro %}
+        window.onload = function() {
+            document.getElementById("errorModal").style.display = "block";
+        }
+        {% endif %}
+
+        // Função para fechar o modal
+        function closeModal() {
+            document.getElementById("errorModal").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
