@@ -1,0 +1,457 @@
+/* Configuração básica do body */
+/* Corpo da página */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e0f7fa; /* Cor de fundo base - Azul bem claro */
+    background-image:  
+        linear-gradient(white 1px, transparent 1px),  /* Gradiente branco bem sutil */
+        linear-gradient(90deg, white 1px, transparent 1px), /* Gradiente branco bem sutil na horizontal */
+        linear-gradient(white 0.5px, transparent 0.5px),  /* Gradiente mais fino branco */
+        linear-gradient(90deg, white 0.5px, #e0f7fa 0.5px); /* Gradiente mais fino branco na horizontal */
+    background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px; /* Tamanho da grade */
+    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px; /* Posições da grade */
+    background-attachment: fixed; /* Garante que o fundo fique fixo durante a rolagem */
+    min-height: 100vh; /* Garante que o fundo cubra a tela inteira */
+}
+
+/* Barra superior (navbar) */
+.title_bar {
+    display: flex;
+    justify-content: space-between; /* Alinha a logo e o botão de login */
+    align-items: center;
+    background-color: #ffdf2c;
+    border-bottom: 4px solid black;
+    padding: 10px 20px;
+    color: black;
+}
+
+.logo_image {
+    height: 50px; /* Ajuste o tamanho da logo */
+}
+
+.title {
+    font-size: 24px;
+    margin: 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.btn_logout {
+    background-color: #d32f2f;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.5s;
+    border: 2=3px solid black;
+
+}
+
+.btn_logout:hover{
+
+    box-shadow: 4px 7px 0px black;
+
+}
+
+.form-logout{
+
+
+    background-color: none;
+    padding: 0px;
+    
+
+}
+
+.btn_logout:hover {
+    background-color: #c62828;
+}
+
+/* Container para os campos do formulário */
+.filtro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none;
+    
+}
+
+/* Container onde o input do Centro de Custo e os de data ficam */
+.filtro-content {
+    position: relative;
+   background-color: rebeccapurple;
+    padding: 50px;
+    border: 2px solid black;
+    border-radius: 4px;
+    width: 50%;
+    box-shadow: 4px 7px 0px black;
+}
+
+.form-login{
+
+    position: relative;
+    background-color: rebeccapurple;
+    padding: 2%;
+    border: 2px solid black;
+    margin-top: 5%;
+    border-radius: 2px;
+    width: 50%;
+    box-shadow: 4px 7px 0px black;
+
+
+}
+
+/* Centro de custo acima dos campos de data */
+.input_container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+#centro_custo{
+
+
+    border: 2px solid black;
+    box-shadow: 4px 7px 0px black;
+}
+
+
+/* Estilo para as opções do select */
+#centro_custo option {
+    padding: 10px; /* Ajusta o espaçamento das opções */
+    font-size: 16px; /* Tamanho da fonte */
+    background-color: white; /* Cor de fundo das opções */
+    border: 2px solid black;
+    color: black; /* Cor do texto das opções */
+}
+
+/* Estilo para as opções ao passar o mouse sobre elas */
+#centro_custo option:hover {
+    background-color: #f1f1f1; /* Cor de fundo ao passar o mouse */
+}
+
+#data_inicial, #data_final{
+
+    border: 2px solid black;
+    box-shadow: 4px 7px 0px black;
+
+
+}
+
+#centro_custo:hover{
+
+
+    
+}
+
+
+.input_container select,
+.input_container input[type="date"] {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+
+.input_container input[type="date"]:focus,
+.input_container select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+/* Alinhando os campos de data lado a lado */
+.date_container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Espaçamento entre os campos */
+    flex-wrap: wrap; /* Permite que os campos se ajustem em telas menores */
+}
+
+.date_container .input_container {
+    width: 48%; /* Cada input de data ocupa metade do espaço disponível */
+}
+
+/* Estilização do botão PESQUISAR */
+.btn_gerar {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #ffdf2c;
+    border: 2px solid black;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+
+}
+
+.btn_gerar:hover {
+    background-color: #388E3C;
+    box-shadow: 4px 10px 0px black;
+
+}
+
+/* Estilização da lista de resultados e botão EXPORTAR */
+h2 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+
+}
+
+.nomes{
+position: relative;
+
+}
+
+.nome-expot{
+
+
+
+
+}
+
+li {
+    padding: 10px;
+    background-color: #ffdf2c;
+    margin: 5px 0;
+    border: 2px solid black;
+    border-radius: 2px;
+}
+
+.btn_export {
+    display: block;
+    width: 15%;
+    height: 15%;
+    margin-top: 2%;
+    padding: 12px;
+    background-color: #1976D2;
+    border: 2px solid black;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+
+}
+
+.btn_export:hover {
+    background-color: #388E3C;
+    box-shadow: 4px 7px 0px black;
+}
+
+.btn_abrir_export {
+    display: block;
+    width: 100%;
+    height: 15%;
+    padding: 12px;
+    background-color: #1976D2;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn_abrir_export:hover {
+    background-color: #1565C0;
+    
+}
+
+
+.form-export{
+
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;     /* Centraliza verticalmente */
+
+    background-color: none;
+    padding: 0px;
+    border-radius: 8px;
+    box-shadow: none;
+    width: 100%; /* Definindo uma largura fixa */
+    text-align: center;
+    margin: 0px auto;
+    
+
+}
+
+/* Estilo para o formulário */
+form {
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 0px auto;
+    width: auto;
+   
+}
+
+/* Estilo dos campos de entrada (input) */
+input[type="text"],
+input[type="password"] {
+    width: 50%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border: 4px solid black;
+    border-radius: 4px;
+    font-size: 16px;
+    box-shadow: 4px 7px 0px black;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+.text-login{
+
+
+color: white;
+
+}
+
+.login {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #ffdf2c;
+    border: 4px solid black;
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 0;
+    transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.login:hover {
+    background-color: #388E3C;
+    box-shadow: 4px 10px 0px black;
+
+}
+
+button:hover {
+    background-color: #388E3C;
+}
+
+.modal {
+    display: none; /* Ocultar por padrão */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0); /* Fundo preto */
+    background-color: rgba(0, 0, 0, 0.4); /* Transparente */
+    padding-top: 0px;
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    padding: 20px;
+    border: 4px solid black;
+    box-shadow: 4px 7px 0px black;
+    height: auto;
+    width: 65%;
+    left: 15%;
+}
+
+/* Estilo do botão de fechar (x) */
+
+
+
+.close-btn {
+    position: relative;
+    color: black;
+    font-size: 28px;
+    font-weight: bold;
+    top: 0%;
+    left: 95%;
+    cursor: pointer;
+    background-color: #c62828;
+    border: 2px solid black;
+    border-radius: 10%;
+    transition: all 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+
+
+
+}
+
+.close-btn:hover{
+
+    box-shadow: 4px 4px 0px black;
+
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilo da mensagem de erro */
+.erro {
+    color: red;
+    font-weight: bold;
+}
+
+/* Estilos para o rodapé */
+footer {
+    background-color: #333; /* Cor de fundo escura */
+    color: white;  /* Texto branco */
+    padding: 20px 0;  /* Espaçamento interno (20px em cima e embaixo) */
+    text-align: center; /* Centraliza o texto */
+    font-size: 14px; /* Define o tamanho da fonte */
+    margin-top: 30px; /* Espaçamento entre o conteúdo principal e o rodapé */
+}
+
+footer .footer-content {
+    max-width: 1200px; /* Limita a largura máxima do conteúdo */
+    margin: 0 auto; /* Centraliza o conteúdo dentro do footer */
+}
+
+footer p {
+    margin: 5px 0; /* Espaçamento pequeno entre os parágrafos */
+}
+
+footer a {
+    color: #00bcd4; /* Cor azul clara para os links */
+    text-decoration: none; /* Remove o sublinhado dos links */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Adiciona sublinhado quando o link é hover */
+}
+
+/* Estilo para as imagens no rodapé */
+footer .footer-icon {
+    width: 20px; /* Define um tamanho fixo para as imagens */
+    height: auto; /* Mantém a proporção das imagens */
+    vertical-align: middle; /* Alinha as imagens ao centro da linha de texto */
+    margin: 0 5px; /* Adiciona um pequeno espaçamento entre as imagens */
+}
+
+/* Responsividade - quando a tela é menor */
+@media (max-width: 768px) {
+    footer p {
+        font-size: 12px; /* Reduz o tamanho da fonte em telas menores */
+    }
+
+    footer .footer-icon {
+        width: 16px; /* Ajusta o tamanho das imagens em telas menores */
+    }
+}

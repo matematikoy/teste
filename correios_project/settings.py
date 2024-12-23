@@ -17,6 +17,10 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Configuração de arquivos estáticos
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # Onde o Django vai procurar os arquivos estáticos em desenvolvimento
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')   # Onde os arquivos estáticos serão armazenados para produção
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -27,7 +31,7 @@ SECRET_KEY = 'django-insecure-3ehs3u#qhkx^&h9#1(*v&s__g&@qm8h78fs1+&xn1ya4wgvbsq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
